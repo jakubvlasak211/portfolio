@@ -1,215 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Restaurace U Dubu Černovice u Tábora</title>
-<meta name="description" content="Restaurace U Dubu na Mariánském náměstí v Černovicích u Tábora. Polední menu, domácí jídla, posezení uvnitř i venku, jídlo s sebou, parkování zdarma.">
-<style>
-  :root{
-    --paper:#f4ecdc;      /* teplý papír */
-    --paper-2:#ebe0c8;
-    --ink:#3a2f26;        /* tmavě hnědá místo černé */
-    --muted:#7a6a59;
-    --leaf:#4f6b3a;       /* listová zelená */
-    --leaf-dark:#33482a;
-    --acorn:#b5652b;      /* barva žaludu */
-    --honey:#e2b04a;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,'Palatino Linotype',serif;line-height:1.65;font-size:18px}
-  a{color:var(--acorn)}
-  .demo{background:var(--honey);color:#4a3510;text-align:center;padding:6px 12px;font-size:.8rem;font-family:system-ui,sans-serif}
-
-  /* hlavička */
-  header{background:var(--leaf-dark);color:#f4ecdc;text-align:center;padding:48px 20px 90px;position:relative}
-  header svg.tree{width:110px;height:auto;display:block;margin:0 auto 6px}
-  header h1{margin:0;font-weight:normal;font-size:clamp(2rem,7vw,3.2rem);letter-spacing:.02em}
-  header h1 em{color:var(--honey);font-style:italic}
-  header p{margin:10px auto 22px;max-width:480px;font-style:italic;color:#dcd3bd}
-  .btn{display:inline-block;background:var(--honey);color:#3a2a0c;text-decoration:none;padding:12px 26px;border-radius:30px 12px 30px 12px;font-family:system-ui,sans-serif;font-weight:600;transition:transform .15s}
-  .btn:hover{transform:rotate(-2deg) scale(1.03)}
-  .wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:48px;display:block}
-
-  main{max-width:880px;margin:0 auto;padding:10px 22px 50px}
-  section{margin-top:52px}
-  h2{font-weight:normal;font-size:1.9rem;margin:0 0 14px;display:inline-block;position:relative}
-  h2::after{content:"";display:block;height:7px;margin-top:2px;border-radius:50%;background:var(--honey);opacity:.7;transform:rotate(-1deg)}
-
-  /* menu na papíře */
-  .menu{background:#fbf6ea;padding:26px 28px;border-radius:4px 18px 6px 22px;box-shadow:3px 4px 0 var(--paper-2),0 0 0 1px #e4d6b8;transform:rotate(-.4deg)}
-  .menu h3{margin:18px 0 6px;font-size:1.05rem;font-style:italic;color:var(--leaf);font-weight:normal}
-  .menu h3:first-child{margin-top:0}
-  .menu ul{list-style:none;margin:0;padding:0}
-  .menu li{display:flex;gap:10px;align-items:baseline;padding:5px 0}
-  .menu li .dots{flex:1;border-bottom:2px dotted #cdbb98;transform:translateY(-4px)}
-  .menu li b{font-weight:normal;white-space:nowrap}
-  .note{font-size:.88rem;color:var(--muted);font-style:italic;margin:14px 0 0}
-
-  /* U nás najdete */
-  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
-  .fact{background:var(--paper-2);padding:18px 18px 16px;border-radius:26px 8px 26px 8px}
-  .fact:nth-child(even){border-radius:8px 26px 8px 26px;transform:rotate(.6deg)}
-  .fact:nth-child(odd){transform:rotate(-.6deg)}
-  .fact h3{margin:0 0 4px;font-size:1.05rem;color:var(--leaf-dark)}
-  .fact p{margin:0;font-size:.92rem;color:var(--muted);font-family:system-ui,sans-serif}
-
-  /* otevírací doba jako tabule */
-  .board{background:var(--leaf-dark);color:#f1ead6;max-width:420px;padding:22px 26px;border-radius:12px 28px 12px 28px;border:6px solid #8a6a43;box-shadow:0 3px 0 #6d5233}
-  .board div{display:flex;justify-content:space-between;gap:16px;padding:6px 0;border-bottom:1px dashed rgba(241,234,214,.35)}
-  .board div:last-child{border-bottom:0}
-  .board span:last-child{color:var(--honey)}
-
-  .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px;align-items:start}
-  .contact address{font-style:normal}
-  .contact .btn{margin-top:6px;background:var(--leaf);color:#fff}
-
-  .hero{max-width:880px;margin:-30px auto 0;padding:0 22px;position:relative;z-index:2}
-  .hero .photo{aspect-ratio:16/9;background:linear-gradient(135deg,#d9c9a3,#c4b184);border-radius:30px 10px 30px 10px;display:flex;align-items:center;justify-content:center;text-align:center;color:#5d4f38;font-style:italic;padding:16px;box-shadow:4px 5px 0 var(--paper-2)}
-  .quick{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;font-family:system-ui,sans-serif}
-  .quick a{display:block;text-decoration:none;text-align:center;padding:14px 10px;border-radius:22px 8px 22px 8px;font-weight:600;line-height:1.35}
-  .quick a small{display:block;font-weight:400;font-size:.8rem;opacity:.85}
-  .quick .q1{background:var(--leaf);color:#fff}
-  .quick .q2{background:var(--honey);color:#3a2a0c}
-  @media(max-width:420px){.quick{grid-template-columns:1fr}}
-  html{scroll-behavior:smooth}
-  section[id]{scroll-margin-top:70px}
-  nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:2px solid var(--paper-2);display:flex;flex-wrap:wrap;justify-content:center;gap:4px 8px;padding:10px 12px;font-family:system-ui,sans-serif}
-  nav a{text-decoration:none;color:var(--leaf-dark);font-weight:600;font-size:.95rem;padding:7px 14px;border-radius:20px 8px 20px 8px}
-  nav a:hover{background:var(--honey);color:#3a2a0c}
-  .about p{max-width:640px;margin:0 0 12px}
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-  .gallery div{aspect-ratio:4/3;background:var(--paper-2);border:2px dashed #c9b891;border-radius:22px 8px 22px 8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-style:italic;font-size:.9rem;text-align:center;padding:10px}
-  .gallery div:nth-child(even){border-radius:8px 22px 8px 22px}
-  .contact .btn.fb{background:#3b5998;margin-left:6px}
-  footer{background:var(--leaf-dark);color:#cfc6ae;text-align:center;padding:26px 20px;font-size:.85rem;font-family:system-ui,sans-serif}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moje webové portfolio</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #111;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        .project-card {
+            background: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-3px);
+        }
+        .project-card h3 {
+            margin-top: 0;
+            color: #0066cc;
+        }
+        .project-card a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            background-color: #0066cc;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .project-card a:hover {
+            background-color: #004999;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-<div class="demo">Nezávazná ukázka webu. Údaje označené [doplnit] se upraví podle vás.</div>
 
-<header>
-  <svg class="tree" viewBox="0 0 120 120" aria-hidden="true">
-    <g fill="none" stroke="#f4ecdc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M60 112 C60 92 58 82 56 70 C52 62 44 58 36 50"/>
-      <path d="M60 112 C61 92 63 80 66 68 C72 60 82 56 90 48"/>
-      <path d="M58 76 C58 58 56 44 60 28"/>
-      <path d="M50 112 H72"/>
-    </g>
-    <g fill="#e2b04a" opacity=".92">
-      <circle cx="60" cy="24" r="16"/><circle cx="38" cy="40" r="14"/><circle cx="84" cy="40" r="14"/>
-      <circle cx="26" cy="52" r="10"/><circle cx="96" cy="52" r="10"/><circle cx="60" cy="46" r="14"/>
-    </g>
-  </svg>
-  <h1>Restaurace <em>U Dubu</em></h1>
-  <p>Domácí jídla a posezení v srdci Černovic u Tábora</p>
-  <a class="btn" href="tel:+420605722317">Zavolat 605 722 317</a>
-  <svg class="wave" viewBox="0 0 1200 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24 C150 48 300 0 450 22 C600 44 750 6 900 24 C1050 42 1130 14 1200 26 V48 H0Z" fill="#f4ecdc"/></svg>
-</header>
+    <header>
+        <h1>Ahoj, já jsem Jakub</h1>
+        <p>Tvořím moderní a přehledné webové stránky pro lokální podniky a projekty.</p>
+    </header>
 
-<nav>
-  <a href="#menu">Menu</a>
-  <a href="#napoje">Nápoje</a>
-  <a href="#o-nas">O nás</a>
-  <a href="#galerie">Galerie</a>
-  <a href="#doba">Otevírací doba</a>
-  <a href="#kontakt">Kontakt</a>
-</nav>
+    <main>
+        <h2>Moje projekty</h2>
 
-<div class="hero">
-  <div class="photo">[velká fotka restaurace nebo jídla od majitelky]</div>
-  <div class="quick">
-    <a class="q1" href="tel:+420605722317">Zavolat a objednat<small>Jídlo s sebou: 605 722 317</small></a>
-    <a class="q2" href="#doba">Otevřeno<small>Po–Čt 14:30–21:30 · Pá–Ne 15:00–24:00</small></a>
-  </div>
-</div>
+        <!-- Projekt 1: Restaurace -->
+        <div class="project-card">
+            <h3>Web pro restauraci</h3>
+            <p>Moderní a čistá prezentace restaurace obsahující otevírací dobu, menu a kontakty, plně přizpůsobená pro mobily.</p>
+            <!-- Sem si pak uprav odkaz na složku nebo soubor tvého webu -->
+            <a href="restaurace-cernovice-ukazka.html">Zobrazit projekt</a>
+        </div>
 
-<main>
-  <section id="menu">
-    <h2>Polední menu</h2>
-    <div class="menu">
-      <h3>Polévka</h3>
-      <ul><li><span>[doplnit polévku]</span><span class="dots"></span><b>[cena] Kč</b></li></ul>
-      <h3>Hlavní jídla</h3>
-      <ul>
-        <li><span>[doplnit jídlo]</span><span class="dots"></span><b>[cena] Kč</b></li>
-        <li><span>[doplnit jídlo]</span><span class="dots"></span><b>[cena] Kč</b></li>
-        <li><span>[doplnit jídlo]</span><span class="dots"></span><b>[cena] Kč</b></li>
-      </ul>
-      <p class="note">Poloviční porce za 70 % ceny. Seznam alergenů vám rádi sdělíme u obsluhy. [ověřit]</p>
-    </div>
-  </section>
+        <!-- Zde můžeš v budoucnu snadno zkopírovat další kartu pro nový projekt -->
+    </main>
 
-  <section id="napoje">
-    <h2>Nápojový lístek</h2>
-    <div class="menu">
-      <h3>Pivo</h3>
-      <ul>
-        <li><span>[doplnit pivo, objem]</span><span class="dots"></span><b>[cena] Kč</b></li>
-        <li><span>[doplnit pivo, objem]</span><span class="dots"></span><b>[cena] Kč</b></li>
-      </ul>
-      <h3>Nealko a káva</h3>
-      <ul>
-        <li><span>[doplnit nápoj, objem]</span><span class="dots"></span><b>[cena] Kč</b></li>
-        <li><span>[doplnit nápoj, objem]</span><span class="dots"></span><b>[cena] Kč</b></li>
-      </ul>
-      <h3>Víno a alkohol</h3>
-      <ul>
-        <li><span>[doplnit nápoj, objem]</span><span class="dots"></span><b>[cena] Kč</b></li>
-      </ul>
-    </div>
-  </section>
+    <footer>
+        <p>&copy; 2026 | Vytvořeno s pomocí moderních technologií</p>
+    </footer>
 
-  <section>
-    <h2>U nás najdete</h2>
-    <div class="facts">
-      <div class="fact"><h3>Uvnitř i venku</h3><p>Posedíte v lokále nebo na venkovním místě.</p></div>
-      <div class="fact"><h3>Jídlo s sebou</h3><p>Zavolejte předem a odnesete si ho domů.</p></div>
-      <div class="fact"><h3>Parkování zdarma</h3><p>Zaparkujete bez poplatku.</p></div>
-      <div class="fact"><h3>Psi vítáni</h3><p>Čtyřnozí hosté nám nevadí. [ověřit]</p></div>
-    </div>
-  </section>
-
-  <section id="o-nas" class="about">
-    <h2>O nás</h2>
-    <p>Restaurace U Dubu najdete přímo na Mariánském náměstí v Černovicích u Tábora.</p>
-    <p>[doplnit: krátký příběh restaurace, od kdy funguje, co je pro ni typické, kdo vaří]</p>
-  </section>
-
-  <section id="galerie">
-    <h2>Galerie</h2>
-    <div class="gallery">
-      <div>[fotka restaurace]</div>
-      <div>[fotka jídla]</div>
-      <div>[fotka zahrádky]</div>
-    </div>
-  </section>
-
-  <section id="doba">
-    <h2>Otevírací doba</h2>
-    <div class="board">
-      <div><span>Pondělí až čtvrtek</span><span>14:30 – 21:30</span></div>
-      <div><span>Pátek až neděle</span><span>15:00 – 24:00</span></div>
-    </div>
-  </section>
-
-  <section id="kontakt">
-    <h2>Kde nás najdete</h2>
-    <div class="contact">
-      <address>
-        <strong>Restaurace U Dubu</strong><br>
-        Mariánské nám. 91<br>
-        394 94 Černovice u Tábora<br><br>
-        Telefon: <a href="tel:+420605722317">605 722 317</a><br>
-        E-mail: <a href="mailto:lenka-pospisilova@post.cz">lenka-pospisilova@post.cz</a><br><br>
-        <a class="btn" href="https://mapy.cz/zakladni?q=Mariánské%20nám.%2091%20Černovice%20u%20Tábora">Ukázat na mapě</a>
-        <a class="btn fb" href="https://www.facebook.com/RestauraceUDubuCernovice/" target="_blank" rel="noopener">Facebook</a>
-      </address>
-      <div class="fact"><h3>Chystáte oslavu?</h3><p>Zavolejte a stůl vám připravíme. [ověřit, zda rezervace nabízejí]</p></div>
-    </div>
-  </section>
-</main>
-
-<footer>Restaurace U Dubu · Mariánské nám. 91, 394 94 Černovice u Tábora</footer>
 </body>
 </html>
