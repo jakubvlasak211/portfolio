@@ -3,71 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moje portfolio</title>
+    <title>Jakub Vlasák | Webové portfolia & projekty</title>
     <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #c29b38;
+            --bg: #f9f8f6;
+            --white: #ffffff;
+            --gray: #666666;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: var(--bg);
+            color: var(--primary);
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
-        /* Hlavní obal, který drží celou stránku přesně uprostřed na každém monitoru */
         .page-container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 20px;
         }
+        /* Fancy hlavička */
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
-        h1 {
-            color: #111;
-            margin-bottom: 10px;
+        header h1 {
+            font-size: 2.8em;
+            color: var(--primary);
+            margin: 0 0 15px 0;
+            letter-spacing: 1px;
+            font-weight: 400;
         }
-        p {
-            color: #666;
-            font-size: 1.1em;
+        header p {
+            color: var(--gray);
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
         }
         h2 {
-            margin-top: 40px;
-            color: #111;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-align: center;
+            font-weight: 400;
+            letter-spacing: 1px;
+            position: relative;
         }
+        h2::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            margin: 10px auto 0;
+        }
+        
+        /* Karty projektů */
         .project-card {
-            background: #ffffff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
+            background: var(--white);
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid transparent;
         }
         .project-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
-        .project-card h3 {
+
+        /* Restaurace - ladění */
+        .project-card.restaurace {
+            border-left-color: #c29b38;
+        }
+        .project-card.restaurace h3 {
+            color: #2c221e;
             margin-top: 0;
-            color: #0066cc;
+            font-size: 1.5em;
         }
-        .project-card a {
+        .project-card.restaurace a {
+            background-color: #c29b38;
+            color: #2c221e;
+        }
+        .project-card.restaurace a:hover {
+            background-color: #d4ab42;
+        }
+
+        /* Kadeřnictví - ladění */
+        .project-card.kadernictvi {
+            border-left-color: #1a1a1a;
+        }
+        .project-card.kadernictvi h3 {
+            color: #1a1a1a;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .project-card.kadernictvi a {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .project-card.kadernictvi a:hover {
+            background-color: #333333;
+        }
+
+        .project-card p {
+            color: var(--gray);
+            margin: 10px 0 20px 0;
+        }
+
+        /* Společné tlačítko uvnitř karet */
+        .btn-project {
             display: inline-block;
-            margin-top: 10px;
             text-decoration: none;
-            background-color: #0066cc;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
+            padding: 10px 24px;
+            border-radius: 30px;
             font-weight: bold;
+            font-size: 0.95em;
+            transition: background 0.2s;
         }
-        .project-card a:hover {
-            background-color: #004999;
-        }
+
+        /* Patička */
         footer {
             text-align: center;
-            margin-top: 50px;
+            margin-top: 80px;
             font-size: 0.9em;
-            color: #888;
+            color: var(--gray);
         }
     </style>
 </head>
@@ -75,28 +139,28 @@
     <div class="page-container">
         
         <header>
-            <h1>Jmenuji se Jakub</h1>
-            <p>Tvořím moderní a přehledné webové stránky pro lokální podniky a projekty.</p>
+            <h1>Jakub Vlasák</h1>
+            <p>Tvořím moderní, čisté a přehledné webové stránky pro lokální podniky a projekty.</p>
         </header>
 
         <h2>Moje projekty</h2>
 
         <!-- Projekt 1: Restaurace -->
-        <div class="project-card">
+        <div class="project-card restaurace">
             <h3>Restaurace U Věže</h3>
-            <p>Tradiční česká kuchyně, poctivé suroviny a skvělé pivo v srdci Černovic</p>
-            <a href="restaurace.html">Zobrazit projekt</a>
+            <p>Tradiční česká kuchyně, poctivé suroviny a skvělé pivo v srdci Černovic.</p>
+            <a href="restaurace.html" class="btn-project">Zobrazit projekt</a>
         </div>
 
         <!-- Projekt 2: Kadeřnictví -->
-        <div class="project-card">
+        <div class="project-card kadernictvi">
             <h3>Salon Elegance</h3>
-            <p>Prémiová péče o vaše vlasy a profesionální styling v centru města</p>
-            <a href="kadernictvi.html">Zobrazit projekt</a>
+            <p>Prémiová péče o vaše vlasy a profesionální styling v centru města.</p>
+            <a href="kadernictvi.html" class="btn-project">Zobrazit projekt</a>
         </div>
 
         <footer>
-            <p>&copy; 2026 Jakub Vlasák</p>
+            <p>&copy; 2026 Jakub Vlasák | Profesionální webové portfolio</p>
         </footer>
 
     </div>
