@@ -73,12 +73,207 @@
         <h2>Moje projekty</h2>
 
         <!-- Projekt 1: Restaurace -->
-        <div class="project-card">
-            <h3>Web pro restauraci</h3>
-            <p>Moderní a čistá prezentace restaurace obsahující otevírací dobu, menu a kontakty, plně přizpůsobená pro mobily.</p>
-            <!-- Sem si pak uprav odkaz na složku nebo soubor tvého webu -->
-            <a href="restaurace.html">Zobrazit projekt</a>
+        <!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurace U Věže | Domácí kuchyně a poctivé pivo</title>
+    <style>
+        :root {
+            --primary: #2c221e;
+            --accent: #c29b38;
+            --bg: #f9f8f6;
+            --white: #ffffff;
+            --gray: #666666;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--primary);
+            background-color: var(--bg);
+            line-height: 1.6;
+        }
+        /* Hlavička / Hero sekce */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+        }
+        header p {
+            font-size: 1.2em;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 14px 32px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background-color: #d4ab42;
+        }
+        /* Hlavní kontejner */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 40px;
+            color: var(--primary);
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            margin: 10px auto 0;
+        }
+        /* Denní menu / Jídelní lístek */
+        .menu-section {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-item-desc {
+            color: var(--gray);
+            font-size: 0.95em;
+            margin-top: 4px;
+        }
+        .price {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: var(--primary);
+            white-space: nowrap;
+            margin-left: 20px;
+        }
+        /* Mřížka informací */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .info-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .info-box h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        /* Patička */
+        footer {
+            background-color: var(--primary);
+            color: #aaaaaa;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2em; }
+            .info-grid { grid-template-columns: 1fr; }
+            .menu-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Restaurace U Věže</h1>
+        <p>Tradiční česká kuchyně, poctivé suroviny a skvělé pivo v srdci Černovic</p>
+        <a href="#kontakt" class="btn">Rezervovat stůl</a>
+    </header>
+
+    <div class="container">
+        
+        <h2>Vybrané speciality z lístku</h2>
+        
+        <div class="menu-section">
+            <div class="menu-item">
+                <div>
+                    <strong>150g Síčková na smetaně</strong>
+                    <div class="menu-item-desc">Hovězí kýta, karlovarský knedlík, brusinkový terč</div>
+                </div>
+                <span class="price">229 Kč</span>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <strong>200g Vyzrálý hovězí Burger</strong>
+                    <div class="menu-item-desc">Cibulová marmeláda, cheddar, slanina, hranolky, domácí dip</div>
+                </div>
+                <span class="price">265 Kč</span>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <strong>300g Pomalu pečená vepřová žebra</strong>
+                    <div class="menu-item-desc">V černém pivu, křen, hořcice, rozpečený chléb</div>
+                </div>
+                <span class="price">289 Kč</span>
+            </div>
+            <div class="menu-item">
+                <div>
+                    <strong>Trhané kachní leg-confit</strong>
+                    <div class="menu-item-desc">Červené zelí s jablky, variace knedlíků</div>
+                </div>
+                <span class="price">249 Kč</span>
+            </div>
         </div>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <h3>Otevírací doba</h3>
+                <p><strong>Pondělí – Čtvrtek:</strong> 11:00 – 22:00<br>
+                <strong>Pátek – Sobota:</strong> 11:00 – 23:00<br>
+                <strong>Neděle:</strong> 11:00 – 21:00</p>
+            </div>
+            <div class="info-box" id="kontakt">
+                <h3>Kde nás najdete</h3>
+                <p><strong>Adresa:</strong> Náměstí 55, Černovice<br>
+                <strong>Telefon:</strong> +420 603 123 456<br>
+                <strong>E-mail:</strong> rezervace@uveze.cz</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Restaurace U Věže | Vytvořeno v rámci profesionálního portfolia</p>
+    </footer>
+
+</body>
+</html>
 
         <!-- Projekt 2: Kadeřnictví -->
         <div class="project-card">
