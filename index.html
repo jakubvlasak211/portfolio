@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
     <title>Jakub Vlasák | Webové portfolia & projekty</title>
     <style>
         :root {
@@ -126,6 +127,20 @@
             transition: background 0.2s;
         }
 
+        /* Sekce o mně, služby, kontakt */
+        .about-box, .contact-box {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            margin-top: 60px;
+        }
+        .about-box h2, .contact-box h2 { margin-top: 0; }
+        .about-box ul { color: var(--gray); padding-left: 20px; }
+        .about-box p, .contact-box p { color: var(--gray); }
+        .contact-box a { color: var(--accent); font-weight: bold; }
+        .note { font-size: 0.85em; color: var(--gray); text-align: center; margin-top: 30px; }
+
         /* Patička */
         footer {
             text-align: center;
@@ -157,6 +172,19 @@
             <h3>Salon Elegance</h3>
             <p>Prémiová péče o vaše vlasy a profesionální styling v centru města.</p>
             <a href="kadernictvi.html" class="btn-project">Zobrazit projekt</a>
+        </div>
+
+        <p class="note">Oba projekty jsou ukázkové návrhy. Texty, ceny a kontaktní údaje jsou smyšlené.</p>
+
+        <div class="about-box">
+            <h2>Co nabízím</h2>
+            <ul>
+                <li>Jednostránkový web pro živnostníky a malé podniky</li>
+                <li>Úprava pro mobil a rychlé načítání</li>
+                <li>Jídelní lístek, ceník, otevírací doba, mapa a kontakt</li>
+                <li>Nahrání na hosting a propojení s doménou</li>
+                <li>Pozdější úpravy obsahu</li>
+            </ul>
         </div>
 
         <footer>
